@@ -45,7 +45,7 @@ bool TFminiPlus::send_uart(uint8_t *input, uint8_t size) {
 bool TFminiPlus::send_i2c(uint8_t *input, uint8_t size) {
     Wire.beginTransmission(_address);
     uint8_t bytes_sent = Wire.write(input, size);
-    if (bytes_sent != size) Wire.write(0);
+    if (bytes_sent != size) Wire.write(uint8_t(0));
     uint8_t error = Wire.endTransmission(true);
     return (bytes_sent == size and not error);
 }
